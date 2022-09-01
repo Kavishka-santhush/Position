@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title>VueJs Demo Example</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    </script>
+    <style>
+        body {
+            background-color: rgb(240, 159, 159);
+        }
+
+        .box {
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="box" v-on:mousemove="handleevent">
+            <div class="text">
+                <h1>Position</h1>
+            </div>
+            <div class="text">({{x}},{{y}})</div>
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data: function () {
+                return {
+                    x: 0,
+                    y: 0
+                }
+            },
+            methods: {
+                handleevent(e) {
+                    this.x = e.offsetX,
+                        this.y = e.offsetY
+                }
+            }
+        })
+        app.mount("#container")
+    </script>
+</body>
+
+</html>
